@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI-Driven Compiler Optimization | Ryan Ashworth</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">Hello.</a>
+
+            <ul>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="project-hero">
+            <p class="project-label">Systems & Performance Engineering</p>
+
+            <h1>AI-Driven Compiler Optimization Study</h1>
+
+            <p class="project-summary">
+                An empirical study comparing AI-optimized C and C++ code against
+                traditional GCC optimization across ARM and x86 architectures.
+            </p>
+
+            <div class="project-tech">
+                <span>C++</span>
+                <span>GCC</span>
+                <span>Linux</span>
+                <span>perf</span>
+                <span>ARM</span>
+                <span>x86</span>
+            </div>
+
+            <div class="project-links">
+                <a href="https://github.com/PatzerATX/CS3339_Project"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    View on GitHub
+                </a>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>Project Overview</h2>
+
+            <p>
+                This project investigated whether AI coding tools could optimize
+                high-performance C and C++ programs as effectively as traditional
+                compiler optimization.
+            </p>
+
+            <p>
+                I compared code optimized by GPT, Claude, and Gemini against GCC
+                -O0 and -O3 across four benchmark workloads. Each implementation
+                was tested on multiple hardware architectures to determine whether
+                AI-generated optimizations produced consistent performance gains.
+            </p>
+
+            <p>
+                Rather than evaluating performance using runtime alone, I also
+                examined processor-level metrics including instructions per cycle,
+                cache misses, and branch misses. This made it possible to identify
+                cases where an optimization improved individual hardware metrics
+                while making the program slower overall.
+            </p>
+        </section>
+
+        <section class="project-section">
+            <h2>Methodology</h2>
+
+            <p>
+                The study used four high-performance computing benchmarks:
+                Hybridsort, KMeans, SRAD, and RSBench. Each benchmark provided
+                a different workload for evaluating the effects of code-level
+                optimization.
+            </p>
+
+            <div class="method-grid">
+
+                <div class="method-card">
+                    <h3>Optimization Approaches</h3>
+                    <p>
+                        AI-generated versions were produced using GPT, Claude,
+                        and Gemini and compared against the original programs
+                        compiled with GCC -O0 and -O3.
+                    </p>
+                </div>
+
+                <div class="method-card">
+                    <h3>Hardware Platforms</h3>
+                    <p>
+                        Tests were performed across ARM and x86 systems,
+                        including Apple Silicon, an Intel system, and a
+                        64-core Linux server.
+                    </p>
+                </div>
+
+                <div class="method-card">
+                    <h3>Performance Metrics</h3>
+                    <p>
+                        Runtime was measured across platforms, while Linux perf
+                        was used on the server to collect instructions per cycle,
+                        cache misses, and branch misses.
+                    </p>
+                </div>
+
+                <div class="method-card">
+                    <h3>Evaluation</h3>
+                    <p>
+                        Results were compared across compiler settings, AI-generated
+                        implementations, benchmarks, and architectures to determine
+                        whether low-level improvements translated into faster
+                        execution.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="project-section results-section">
+            <h2>Key Results</h2>
+
+            <p>
+                The experiments showed that improvements in individual
+                microarchitectural metrics did not necessarily translate into
+                faster application performance.
+            </p>
+
+            <div class="results-grid">
+
+                <div class="result-card">
+                    <span class="result-number">~75×</span>
+                    <h3>Runtime Regression</h3>
+                    <p>
+                        An AI-generated RSBench optimization removed effective
+                        OpenMP parallelism, producing an approximately 75× runtime
+                        regression on the 64-core Linux server.
+                    </p>
+                </div>
+
+                <div class="result-card">
+                    <span class="result-number">~7.5×</span>
+                    <h3>Hybridsort IPC Improvement</h3>
+                    <p>
+                        GPT increased Hybridsort IPC from 0.21 to 1.58 on the
+                        64-core Linux server, while still failing to outperform
+                        the GCC-optimized versions in runtime.
+                    </p>
+                </div>
+
+                <div class="result-card">
+                    <span class="result-number">4</span>
+                    <h3>HPC Benchmarks</h3>
+                    <p>
+                        Performance was evaluated across Hybridsort, KMeans,
+                        SRAD, and RSBench rather than relying on the behavior
+                        of a single workload.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>Performance Analysis</h2>
+
+            <div class="result-visual">
+                <h3>Hybridsort: Brooks Server Metrics</h3>
+
+                <img
+                    src="../assets/images/hybridsort-brooks-metrics.png"
+                    alt="Hybridsort performance metrics comparing GCC and AI optimization approaches on the Brooks server"
+                >
+
+                <p>
+                    GPT increased instructions per cycle from 0.21 with GCC -O0
+                    to 1.58 while also substantially reducing cache misses.
+                    Despite these improvements, the changes did not produce a
+                    corresponding runtime improvement, demonstrating that stronger
+                    microarchitectural metrics do not necessarily translate into
+                    faster overall execution.
+                </p>
+            </div>
+
+            <div class="result-visual">
+                <h3>RSBench: Runtime Across Architectures</h3>
+
+                <img
+                    src="../assets/images/rsbench-runtime.png"
+                    alt="RSBench execution time comparing GCC and AI optimization approaches across Mac, PC, and Brooks server architectures"
+                >
+
+                <p>
+                    RSBench exposed one of the study's most significant optimization
+                    failures. GPT replaced the OpenMP target/offload implementation
+                    with a CPU-resident event loop but inadvertently removed CPU
+                    parallelism in the process. On the 64-core Brooks server, runtime
+                    increased from roughly 10 seconds with GCC -O0 to approximately
+                    749 seconds with the GPT-optimized implementation.
+                </p>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>Key Takeaways</h2>
+
+            <p>
+                This project reinforced that code optimization cannot be evaluated
+                using a single performance metric. Improvements in IPC, cache
+                behavior, or instruction count can be misleading when changes to
+                parallelism or program structure negatively affect total runtime.
+            </p>
+
+            <p>
+                The experiments also demonstrated the importance of validating
+                AI-generated optimization across different workloads and hardware
+                architectures. AI tools were capable of producing meaningful
+                low-level improvements, but their results were less predictable
+                than traditional compiler optimization and occasionally introduced
+                significant performance regressions.
+            </p>
+
+            <p>
+                Most importantly, the project gave me hands-on experience with
+                performance benchmarking, Linux hardware counters, parallel code,
+                cross-architecture testing, and interpreting the relationship
+                between software changes and processor-level behavior.
+            </p>
+
+            <div class="project-links">
+                <a href="https://github.com/PatzerATX/CS3339_Project"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Explore the Project on GitHub
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Ryan Ashworth</p>
+    </footer>
+
+</body>
+</html>
