@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A* Pathfinding | Ryan Ashworth</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="../index.html" class="logo">Hello.</a>
+
+        <ul>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <section class="project-hero">
+        <p class="project-label">Artificial Intelligence & Search Algorithms</p>
+
+        <h1>A* Pathfinding & Adaptive Search</h1>
+
+        <p class="project-summary">
+            An experimental comparison of A* search strategies across
+            randomly generated 51×51 grid environments, analyzing
+            pathfinding behavior, replanning, tie-breaking strategies,
+            and search efficiency.
+        </p>
+
+        <div class="project-tech">
+            <span>Python</span>
+            <span>A*</span>
+            <span>Heuristic Search</span>
+            <span>Matplotlib</span>
+            <span>Algorithm Analysis</span>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Project Overview</h2>
+
+        <p>
+            This project explored how different A* search strategies behave
+            when an agent must navigate partially known grid environments.
+            The experiments used randomly generated 51×51 grids with a
+            30% probability that each cell would be blocked.
+        </p>
+
+        <p>
+            I implemented Forward A*, Repeated Forward A*, Repeated Backward A*,
+            and Adaptive A*. Each algorithm used four-directional movement and
+            Manhattan distance as its heuristic while navigating from a
+            randomly selected start cell to a target cell.
+        </p>
+
+        <p>
+            The project also compared high-g and low-g tie-breaking strategies
+            and measured factors including path length and the number of expanded
+            cells. Tests across 30 randomly generated environments provided a
+            consistent basis for comparing the behavior and efficiency of the
+            different search strategies.
+        </p>
+    </section>
+
+    <section class="project-section">
+        <h2>Search Strategies</h2>
+
+        <p>
+            Multiple variations of A* were implemented to examine how search
+            direction, replanning, and learned information affect pathfinding
+            efficiency in partially known environments.
+        </p>
+
+        <div class="method-grid">
+
+            <div class="method-card">
+                <h3>Forward A*</h3>
+                <p>
+                    Searches from the agent's current position toward the
+                    target using Manhattan distance to guide the search.
+                    High-g and low-g tie-breaking strategies were compared
+                    to evaluate their effect on expanded cells.
+                </p>
+            </div>
+
+            <div class="method-card">
+                <h3>Repeated Forward A*</h3>
+                <p>
+                    Plans a path toward the target using currently known
+                    information. When the agent discovers a blocked cell,
+                    the search is repeated from its new position using the
+                    updated grid knowledge.
+                </p>
+            </div>
+
+            <div class="method-card">
+                <h3>Repeated Backward A*</h3>
+                <p>
+                    Performs each replanning search in the opposite direction,
+                    searching from the target toward the agent's current
+                    position while incorporating newly discovered obstacles.
+                </p>
+            </div>
+
+            <div class="method-card">
+                <h3>Adaptive A*</h3>
+                <p>
+                    Reuses information from previous searches by updating
+                    heuristic values for expanded states, allowing later
+                    searches to make use of knowledge gained during earlier
+                    planning.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>High-g vs. Low-g Tie-Breaking</h2>
+
+        <p>
+            When multiple states have the same A* priority value, the
+            tie-breaking strategy determines which state is explored first.
+            I compared strategies that favor larger g-values against those
+            that favor smaller g-values to measure how this choice affects
+            the number of expanded cells.
+        </p>
+
+        <div class="comparison-grid">
+
+            <div class="comparison-card">
+                <h3>High-g Tie-Breaking</h3>
+
+                <img
+                    src="../assets/images/astar-high-g.png"
+                    alt="A* search visualization using high-g tie-breaking"
+                >
+
+                <p>
+                    Favoring larger g-values produced a more directed search
+                    toward the target, reducing the number of states explored
+                    unnecessarily.
+                </p>
+            </div>
+
+            <div class="comparison-card">
+                <h3>Low-g Tie-Breaking</h3>
+
+                <img
+                    src="../assets/images/astar-low-g.png"
+                    alt="A* search visualization using low-g tie-breaking"
+                >
+
+                <p>
+                    Favoring smaller g-values caused the search to expand a
+                    much broader region of the grid before reaching the target.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Adaptive A*</h2>
+
+        <p>
+            Adaptive A* extends repeated search by using information learned
+            during previous searches. After a search is completed, heuristic
+            values for expanded states are updated using the cost of the
+            discovered path to the target.
+        </p>
+
+        <div class="result-visual">
+            <h3>Adaptive Search Visualization</h3>
+
+            <img
+                src="../assets/images/adaptive-astar.png"
+                alt="Adaptive A* pathfinding visualization showing expanded cells and the resulting route"
+            >
+
+            <p>
+                As the agent discovers blocked cells and replans, Adaptive A*
+                can reuse information gathered during earlier searches rather
+                than treating every new search as an entirely independent
+                problem. Across the experiments, this reduced the number of
+                expanded cells while producing paths of similar length.
+            </p>
+        </div>
+    </section>
+
+    <section class="project-section results-section">
+        <h2>Key Results</h2>
+
+        <p>
+            Averaging results across 30 randomly generated grid environments
+            revealed substantial differences in search efficiency even when
+            the algorithms produced paths of similar length.
+        </p>
+
+        <div class="results-grid">
+
+            <div class="result-card">
+                <span class="result-number">460 vs. 2,404</span>
+                <h3>High-g vs. Low-g</h3>
+                <p>
+                    Repeated Forward A* with high-g tie-breaking averaged
+                    460 expanded nodes compared with 2,404 using low-g,
+                    while producing similar path lengths.
+                </p>
+            </div>
+
+            <div class="result-card">
+                <span class="result-number">460 vs. 1,404</span>
+                <h3>Forward vs. Backward</h3>
+                <p>
+                    Repeated Forward A* expanded substantially fewer nodes
+                    than Repeated Backward A*, while average path lengths
+                    remained similar.
+                </p>
+            </div>
+
+            <div class="result-card">
+                <span class="result-number">409</span>
+                <h3>Adaptive A*</h3>
+                <p>
+                    Adaptive A* produced the lowest average expanded-node
+                    count among the repeated-search comparisons while
+                    maintaining a similar path length.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Key Takeaways</h2>
+
+        <p>
+            This project demonstrated that algorithms producing similar final
+            paths can require dramatically different amounts of search work.
+            In particular, the choice of tie-breaking strategy had a major
+            effect on the number of expanded nodes without substantially
+            changing the resulting path length.
+        </p>
+
+        <p>
+            Adaptive A* also demonstrated the value of retaining information
+            across repeated searches. By updating and reusing heuristic values,
+            the algorithm was able to make increasingly informed decisions as
+            new obstacles were discovered.
+        </p>
+
+        <p>
+            I also examined the memory cost of my Python implementation and
+            found that its use of lists, sets, dictionaries, and priority queues
+            would limit its ability to scale to much larger grids. A more
+            memory-efficient implementation could replace several of these
+            structures with fixed-size arrays of bits and integers.
+        </p>
+
+        <div class="project-links">
+            <a href="https://github.com/PatzerATX/heuristic-search-a-star-study"
+               target="_blank"
+               rel="noopener noreferrer">
+                Explore the Project on GitHub
+            </a>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 Ryan Ashworth</p>
+</footer>
+
+</body>
+</html>
