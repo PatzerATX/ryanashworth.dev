@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Image Classification | Ryan Ashworth</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="../index.html" class="logo">Hello.</a>
+
+        <ul>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <section class="project-hero">
+        <p class="project-label">Machine Learning & Image Classification</p>
+
+        <h1>Image Classification with Naive Bayes & Perceptron</h1>
+
+        <p class="project-summary">
+            A machine learning study comparing Naive Bayes and Perceptron
+            classifiers on handwritten digit and face image datasets using
+            multiple feature-extraction strategies.
+        </p>
+
+        <div class="project-tech">
+            <span>Python</span>
+            <span>Naive Bayes</span>
+            <span>Perceptron</span>
+            <span>Feature Extraction</span>
+            <span>Machine Learning</span>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Project Overview</h2>
+
+        <p>
+            This project explored supervised image classification by implementing
+            Naive Bayes and Perceptron classifiers and testing them on handwritten
+            digit and face image datasets.
+        </p>
+
+        <p>
+            I implemented the classification pipeline in Python, including data
+            processing, feature extraction, model training, prediction, and
+            performance evaluation. The experiments compared how each classifier
+            responded to different amounts of training data and different feature
+            representations.
+        </p>
+
+        <p>
+            Two feature-extraction strategies were evaluated: a raw-pixel
+            representation and a sliding 3×3 window designed to capture local
+            patterns within each image. The classifiers were then compared using
+            classification accuracy, runtime, and variation across repeated
+            experimental runs.
+        </p>
+    </section>
+
+    <section class="project-section">
+        <h2>Feature Extraction</h2>
+
+        <p>
+            Before classification, each image was converted into a set of
+            numerical features that the learning algorithms could use during
+            training and prediction. I implemented two approaches to compare
+            how feature representation affected classifier performance.
+        </p>
+
+        <div class="method-grid">
+
+            <div class="method-card">
+                <h3>Raw Pixel Features</h3>
+
+                <p>
+                    Each pixel was treated as an individual feature based on
+                    whether that location contained part of the image. This
+                    provided the classifiers with a direct representation of
+                    the original image data.
+                </p>
+            </div>
+
+            <div class="method-card">
+                <h3>Sliding 3×3 Window</h3>
+
+                <p>
+                    A 3×3 window moved across the image to create features
+                    representing small local regions. This approach captured
+                    relationships between neighboring pixels rather than
+                    evaluating every pixel independently.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Classification Algorithms</h2>
+
+        <p>
+            I implemented two supervised learning algorithms to compare
+            different approaches to image classification. Both classifiers
+            were trained and tested using the same digit and face datasets
+            and the two feature representations.
+        </p>
+
+        <div class="method-grid">
+
+            <div class="method-card">
+                <h3>Naive Bayes</h3>
+
+                <p>
+                    The Naive Bayes classifier learned class probabilities
+                    from the training data and used the observed image features
+                    to calculate the most likely classification for each test
+                    image.
+                </p>
+            </div>
+
+            <div class="method-card">
+                <h3>Perceptron</h3>
+
+                <p>
+                    The Perceptron classifier learned a set of feature weights
+                    for each class. Predictions were made by scoring an image
+                    against each class, with weights updated during training
+                    whenever an image was classified incorrectly.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="project-section results-section">
+        <h2>Experimental Results</h2>
+
+        <p>
+            Performance was evaluated across multiple training-set sizes and
+            averaged across five runs. The experiments measured classification
+            accuracy, runtime, and variation between runs for both the digit
+            and face datasets.
+        </p>
+
+        <div class="results-grid">
+
+            <div class="result-card">
+                <span class="result-number">Digits</span>
+                <h3>Perceptron Advantage</h3>
+
+                <p>
+                    The Perceptron generally achieved stronger classification
+                    accuracy on the handwritten digit dataset than Naive Bayes,
+                    particularly as more training data became available.
+                </p>
+            </div>
+
+            <div class="result-card">
+                <span class="result-number">Faces</span>
+                <h3>Naive Bayes Advantage</h3>
+
+                <p>
+                    Naive Bayes generally performed better on the face dataset,
+                    showing that classifier effectiveness depended on the
+                    characteristics of the classification problem.
+                </p>
+            </div>
+
+            <div class="result-card">
+                <span class="result-number">~45 sec</span>
+                <h3>Training Cost</h3>
+
+                <p>
+                    Perceptron performance came with a significant runtime cost.
+                    The 100% digit training experiment using raw-pixel features
+                    approached 45 seconds of runtime.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="result-visual">
+            <h3>Perceptron Prediction Rate</h3>
+
+            <img
+                src="../assets/images/perceptron-prediction-rate.png"
+                alt="Perceptron prediction rates across increasing training percentages for digit and face datasets"
+            >
+
+            <p>
+                Perceptron prediction rates generally improved as additional
+                training data became available. Performance also varied between
+                the digit and face datasets and between the raw-pixel and
+                sliding-window feature representations.
+            </p>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Key Takeaways</h2>
+
+        <p>
+            This project demonstrated that classifier performance depends not
+            only on the learning algorithm, but also on the dataset, feature
+            representation, and amount of training data available. Neither
+            classifier was universally strongest across both classification
+            problems.
+        </p>
+
+        <p>
+            Naive Bayes generally performed better on face classification,
+            while the Perceptron produced stronger results on handwritten
+            digits. The Perceptron's improved digit performance also came with
+            substantially greater runtime as the amount of training data
+            increased.
+        </p>
+
+        <p>
+            Comparing raw-pixel and sliding-window features also demonstrated
+            how feature engineering can influence classification behavior.
+            More complex feature representations did not automatically produce
+            better results, reinforcing the importance of evaluating feature
+            design experimentally.
+        </p>
+
+        <div class="project-links">
+            <a href="https://github.com/PatzerATX/Image_Class"
+               target="_blank"
+               rel="noopener noreferrer">
+                Explore the Project on GitHub
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 Ryan Ashworth</p>
+</footer>
+
+</body>
+</html>
