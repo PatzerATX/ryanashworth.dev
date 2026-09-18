@@ -118,6 +118,8 @@ a {
 }
 
 .project-card {
+    display: flex;
+    flex-direction: column;
     background-color: #111c31;
     padding: 28px;
     border: 1px solid #334155;
@@ -127,6 +129,7 @@ a {
 .project-card h3 {
     font-size: 1.4rem;
     margin-bottom: 14px;
+    min-height: 4rem;
 }
 
 .project-card p {
@@ -135,14 +138,17 @@ a {
 }
 
 .project-card span {
+    display: block;
     color: #38bdf8;
     font-size: 0.9rem;
+    margin-top: auto;
+    margin-bottom: 12px;
 }
 
 .project-link {
     display: block;
     width: fit-content;
-    margin-top: 18px;
+    margin-top: 0;
     color: #38bdf8;
     font-size: 0.95rem;
     font-weight: bold;
@@ -161,6 +167,10 @@ a {
 .contact h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
+}
+
+.contact p {
+    margin-bottom: 1.5rem;
 }
 
 .contact-links {
@@ -234,7 +244,7 @@ footer {
 }
 
 .project-section {
-    padding: 80px 8%;
+    padding: 40px 8%;
     max-width: 1000px;
 }
 
