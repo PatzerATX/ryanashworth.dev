@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI & Game Theory for Cybersecurity | Ryan Ashworth</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="../index.html" class="logo">Hello.</a>
+
+            <ul>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <section class="project-section">
+
+            <div class="project-status" style="margin-bottom: 24px;">CURRENT PROJECT</div>
+
+            <h1>AI & Game Theory for Cybersecurity</h1>
+
+            <p>
+                <strong>
+                    Can game theory help identify a rational balance between
+                    cybersecurity investment and residual attack risk?
+                </strong>
+            </p>
+
+
+            <h2>Why I Started This Project</h2>
+
+            <p>
+                I became interested in the concept of Nash equilibrium after watching
+                the movie <em>A Beautiful Mind</em>. It's a game theory idea that a system
+                can reach a state where no participant benefits by changing strategy independently.
+            </p>
+
+            <p>
+                That led me to think about cybersecurity. An attacker and a defender are
+                making competing strategic decisions, but defensive resources are finite.
+                Increasing security can reduce risk, but additional protection also carries
+                cost, and eliminating all risk may be impractical.
+            </p>
+
+            <p>
+                I began wondering whether this interaction could be modeled as a game:
+                Is there an equilibrium at which a defender's security investment represents
+                a rational response to an attacker's strategy, and beyond which additional
+                defensive investment produces diminishing strategic benefit?
+            </p>
+
+            <p>
+                This project grew out of that question. My goal is not to construct arbitrary
+                game payoffs that produce an equilibrium, but to investigate how attacker and
+                defender incentives can be modeled using defensible assumptions and then
+                determine what game-theoretic and AI methods can tell us about the resulting
+                security decisions.
+            </p>
+
+
+            <h2>Research Question</h2>
+
+            <p>
+                Can an attacker-defender cybersecurity interaction be represented with a
+                mathematically defensible game model, and can equilibrium analysis help
+                identify a rational level of defensive investment relative to the remaining
+                attack risk?
+            </p>
+
+
+            <h2>Current Approach</h2>
+
+            <p>
+                The project is currently focused on defining the game itself: identifying
+                the attacker and defender strategies, determining which costs and benefits
+                belong in their utility functions, and establishing how those values can be
+                justified rather than chosen simply to produce a desired result.
+            </p>
+
+            <p>
+                Once the model is defensible, I plan to examine its equilibrium behavior and
+                explore how AI techniques can be used to analyze or learn strategies within
+                more complex versions of the attacker-defender environment.
+            </p>
+
+
+            <h2>Current Status</h2>
+
+            <p>
+                Research and model development are in progress. The current focus is on the
+                mathematical formulation and assumptions behind the attacker-defender game
+                before moving into implementation and experimentation.
+            </p>
+
+
+            <h2>Next Steps</h2>
+
+            <ul style="padding-left: 20px; margin-left: 0;">
+                <li>Define attacker and defender strategy spaces.</li>
+                <li>Develop and justify payoff and utility functions.</li>
+                <li>Analyze the initial model for Nash equilibria.</li>
+                <li>Implement the model and validate its behavior experimentally.</li>
+                <li>Explore AI-based strategy learning as the model becomes more complex.</li>
+            </ul>
+
+
+            <a href="../index.html#projects"
+               class="project-link"
+               style="display: inline-block; margin-top: 24px;">
+                ← Back to Projects
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>&copy; 2026 Ryan Ashworth</p>
+    </footer>
+
+</body>
+</html>
