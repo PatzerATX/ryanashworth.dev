@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Evolution of Image Classification | Ryan Ashworth</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="../index.html" class="logo">Hello.</a>
+
+        <ul>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <section class="project-hero">
+        <p class="project-label">Computer Vision & Deep Learning</p>
+
+        <h1>Evolution of Image Classification</h1>
+
+        <p class="project-summary">
+            From handcrafted features to convolutional neural networks:
+            an experimental comparison of traditional machine learning
+            and deep learning approaches across MNIST and CIFAR-10.
+        </p>
+
+        <div class="project-tech">
+            <span>Python</span>
+            <span>PyTorch</span>
+            <span>scikit-learn</span>
+            <span>Computer Vision</span>
+            <span>CNNs</span>
+            <span>GPU Computing</span>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Project Overview</h2>
+
+        <p>
+            This project investigates how image representation and model
+            architecture affect classification performance as visual
+            complexity increases. I developed and evaluated five
+            classification pipelines on two datasets: MNIST, containing
+            handwritten digits, and CIFAR-10, containing natural color images.
+        </p>
+
+        <p>
+            The study progresses from raw-pixel linear classifiers through
+            handcrafted Histogram of Oriented Gradients (HOG) features
+            to fully connected neural networks and convolutional neural
+            networks (CNNs).
+        </p>
+
+        <p>
+            Classical machine learning pipelines were implemented using
+            scikit-learn, while neural networks were developed using
+            PyTorch and trained on a Google Colab T4 GPU. Controlled
+            experiments evaluated classification accuracy, feature
+            representations, hyperparameters, generalization, and
+            overfitting.
+        </p>
+    </section>
+
+    <section class="project-section">
+        <h2>Classification Approaches</h2>
+
+        <p>
+            Five approaches were evaluated on both datasets, producing
+            ten classification pipelines. The experiments were designed
+            to distinguish improvements from better image representations
+            from those resulting from changes in the classifier itself.
+        </p>
+
+        <div class="method-grid">
+
+            <div class="method-card">
+                <h3>Raw Pixels + Logistic Regression</h3>
+
+                <p>
+                    Flattened images into numerical feature vectors and
+                    trained multiclass logistic regression models to
+                    establish linear classification baselines.
+                </p>
+            </div>
+
+            <div class="method-card">
+                <h3>HOG + Logistic Regression</h3>
+
+                <p>
+                    Extracted local edge orientation and shape information
+                    using HOG features. Compared orientation-bin settings
+                    to evaluate the impact of handcrafted representations.
+                </p>
+            </div>
+
+            <div class="method-card">
+                <h3>HOG + Linear SVM</h3>
+
+                <p>
+                    Reused the selected HOG representations with a linear
+                    support vector machine, isolating the effect of
+                    changing the classification algorithm.
+                </p>
+            </div>
+
+            <div class="method-card">
+                <h3>Fully Connected Neural Network</h3>
+
+                <p>
+                    Developed PyTorch neural networks using dense layers
+                    and ReLU activations. Investigated learning rates,
+                    training duration, and generalization behavior.
+                </p>
+            </div>
+
+            <div class="method-card">
+                <h3>Convolutional Neural Network</h3>
+
+                <p>
+                    Built CNNs with convolutional layers, ReLU activations,
+                    and max pooling to learn spatial image features
+                    directly from the original image tensors.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Experimental Methodology</h2>
+
+        <p>
+            Each dataset was divided into fixed training and validation
+            subsets using an 80/20 stratified split. The official test
+            datasets remained separate during model selection.
+        </p>
+
+        <p>
+            Classical models used standardized features, while neural
+            networks were trained with mini-batch optimization using
+            Adam and cross-entropy loss. Hyperparameters were evaluated
+            using validation accuracy before final test performance
+            was recorded.
+        </p>
+
+        <p>
+            The experiments also examined training and validation
+            accuracy curves, confusion matrices, and individual
+            misclassified images to understand where each approach
+            succeeded or struggled.
+        </p>
+    </section>
+
+    <section class="project-section results-section">
+        <h2>Experimental Results</h2>
+
+        <p>
+            Convolutional neural networks achieved the highest final
+            test accuracy on both datasets. The advantage was
+            particularly significant on CIFAR-10, where learning
+            spatial image features improved performance over
+            fully connected networks and classical classifiers.
+        </p>
+
+        <div class="results-grid">
+
+            <div class="result-card">
+                <span class="result-number">99.02%</span>
+                <h3>MNIST CNN Accuracy</h3>
+
+                <p>
+                    The convolutional neural network achieved 99.02%
+                    test accuracy on handwritten digit classification,
+                    outperforming all four alternative pipelines.
+                </p>
+            </div>
+
+            <div class="result-card">
+                <span class="result-number">67.28%</span>
+                <h3>CIFAR-10 CNN Accuracy</h3>
+
+                <p>
+                    The CNN achieved 67.28% test accuracy on natural
+                    images, compared with 53.96% for the fully
+                    connected neural network.
+                </p>
+            </div>
+
+            <div class="result-card">
+                <span class="result-number">+14.29</span>
+                <h3>HOG Feature Improvement</h3>
+
+                <p>
+                    Handcrafted HOG features improved CIFAR-10
+                    logistic-regression test accuracy by 14.29
+                    percentage points over the raw-pixel baseline.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="project-section">
+        <h2>Key Findings</h2>
+
+        <p>
+            <strong>Feature representation mattered more than the choice
+            between linear classifiers.</strong> Switching from raw
+            pixels to HOG improved classification substantially,
+            particularly on CIFAR-10. However, switching from logistic
+            regression to a linear SVM while holding HOG features
+            constant produced almost no accuracy improvement.
+        </p>
+
+        <p>
+            <strong>CNNs were more effective on visually complex
+            images.</strong> Convolutional filters and pooling allowed
+            the network to learn local spatial relationships rather
+            than relying on fixed pixel positions. On CIFAR-10, the
+            CNN exceeded the fully connected network by 13.32
+            percentage points in final test accuracy.
+        </p>
+
+        <p>
+            <strong>Model complexity introduced overfitting.</strong>
+            The CIFAR-10 CNN reached 99.28% training accuracy,
+            but only 67.28% final test accuracy. Validation accuracy
+            peaked earlier in training, suggesting that techniques
+            such as early stopping and checkpoint selection could
+            improve generalization.
+        </p>
+    </section>
+
+    <section class="project-section">
+        <h2>Source Code & Full Report</h2>
+
+        <p>
+            The GitHub repository contains the Google Colab notebook,
+            supporting Python files, project documentation, and the
+            complete experimental report with training curves,
+            confusion matrices, and detailed results.
+        </p>
+
+        <div class="project-links">
+            <a href="https://github.com/PatzerATX/image-classification-evolution"
+               target="_blank"
+               rel="noopener noreferrer">
+                Explore the Project on GitHub
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 Ryan Ashworth</p>
+</footer>
+
+</body>
+</html>
